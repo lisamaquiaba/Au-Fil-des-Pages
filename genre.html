@@ -32,7 +32,7 @@
           </a>
         </div>
         <div class="wrapper-link">
-          <a href="index.html" class="active nav-link">Accueil</a>
+          <a href="index.html" class="nav-link">Accueil</a>
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
@@ -55,82 +55,138 @@
         <div class="nav-toggle"><img src="img/list.png" alt="" /></div>
       </nav>
     </header>
-    <section class="wrapper">
-      <div class="text">
-        <h1>Bienvenue chez Au Fil des Pages</h1>
-        <p class="test2">
-          La propriétaire, Lisa et ses employés vous invite chez Au fil des
-          Pages; une librairie pour tout les passionnés de lecture de tout
-          horizons. Dans une ambiance calme et cosy, venez découvrir nos
-          nouveautés. Que vous vous présentiez à notre librairie ou sur notre
-          site internet; romans, bandes dessinés, mangas, essais et bien plus
-          encore vous attend! Au fil des Pages vous propose également un "Coin
-          Café", une pièce cosy et cocooning, parfaite pour vous détendre devant
-          un bon livre et une bonne boisson. Sur le site internet de la
-          librairie, vous avez la possibilité de passer commande et vérifié la
-          disponibilité de nos produits.
-        </p>
+    <section class="wrapper-recherche">
+      <div class="menu-genre">
+        <select name="genre" id="select-genre">
+          <option class="default-value" value="">
+            --- Sélectionnez un Genre ---
+          </option>
+          <option value="romance">Romance</option>
+          <option value="new-romane">New-Romance</option>
+          <option value="fiction">Fiction</option>
+          <option value="science-fiction">Science-Fiction</option>
+          <option value="litterature">Littérature</option>
+          <option value="polar">Polar</option>
+          <option value="fantaisie">Fantaisie</option>
+          <option value="thriller">Thriller</option>
+        </select>
       </div>
-      <div class="illu">
-        <img
-          src="img/library.png"
-          alt="Illustration de la librairie Au fil des Pages"
-          width="400"
-        />
+      <div class="recherche">
+        <input type="search" id="search" name="" placeholder="Recherche" />
       </div>
     </section>
-    <section class="wrapper-bestseller">
-      <p>Nos Best seller du mois</p>
-      <div class="bestseller">
-        <div class="img-bestseller">
+    <div class="container">
+      <section class="wrapper-preview">
+        <div>
           <img
+            class="img-product"
             src="img/la_femme_de_menage.png"
-            alt="Couverture du livre La femme de ménage"
+            alt="Couverture du livre"
           />
         </div>
-        <div class="img-bestseller">
+        <div>
+          <div class="book">
+            <h3>La Femme de Ménage</h3>
+            <a class="more" href="product-detail.html">Voir plus</a>
+            <div class="description-book">
+              <p>Type :</p>
+              <p>Format :</p>
+              <p>Editeur :</p>
+              <p>Parution :</p>
+            </div>
+          </div>
+          <div class="purchase">
+            <p>8,60€</p>
+            <button class="button-form">
+              <img src="img/cart.png" alt="Panier" />
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="wrapper-preview">
+        <div>
           <img
+            class="img-product"
             src="img/la_femme_de_menage.png"
-            alt="Couverture du livre La femme de ménage"
+            alt="Couverture du livre"
           />
         </div>
-        <div class="img-bestseller">
+        <div>
+          <div class="book">
+            <h3>La Femme de Ménage</h3>
+            <a class="more" href="product-detail.html">Voir plus</a>
+            <div class="description-book">
+              <p>Type :</p>
+              <p>Format :</p>
+              <p>Editeur :</p>
+              <p>Parution :</p>
+            </div>
+          </div>
+          <div class="purchase">
+            <p>8,60€</p>
+            <button class="button-form">
+              <img src="img/cart.png" alt="Panier" />
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="container">
+      <section class="wrapper-preview">
+        <div>
           <img
+            class="img-product"
             src="img/la_femme_de_menage.png"
-            alt="Couverture du livre La femme de ménage"
+            alt="Couverture du livre"
           />
         </div>
-      </div>
-    </section>
-    <section>
-      <p>Nos Livres par catégories</p>
-      <div class="wrapper-categories">
-        <div class="categories">
-          <a href="genre.html">Romance</a>
+        <div>
+          <div class="book">
+            <h3>La Femme de Ménage</h3>
+            <a class="more" href="product-detail.html">Voir plus</a>
+            <div class="description-book">
+              <p>Type :</p>
+              <p>Format :</p>
+              <p>Editeur :</p>
+              <p>Parution :</p>
+            </div>
+          </div>
+          <div class="purchase">
+            <p>8,60€</p>
+            <button class="button-form">
+              <img src="img/cart.png" alt="Panier" />
+            </button>
+          </div>
         </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
+      </section>
+      <section class="wrapper-preview">
+        <div>
+          <img
+            class="img-product"
+            src="img/la_femme_de_menage.png"
+            alt="Couverture du livre"
+          />
         </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
+        <div>
+          <div class="book">
+            <h3>La Femme de Ménage</h3>
+            <a class="more" href="product-detail.html">Voir plus</a>
+            <div class="description-book">
+              <p>Type :</p>
+              <p>Format :</p>
+              <p>Editeur :</p>
+              <p>Parution :</p>
+            </div>
+          </div>
+          <div class="purchase">
+            <p>8,60€</p>
+            <button class="button-form">
+              <img src="img/cart.png" alt="Panier" />
+            </button>
+          </div>
         </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
-        </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
-        </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
-        </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
-        </div>
-        <div class="categories">
-          <a href="genre.html">Romance</a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <div class="footer">
       <div class="logo-footer">
         <img
