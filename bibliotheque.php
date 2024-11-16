@@ -1,3 +1,14 @@
+<?php
+    require_once __DIR__ . "/lib/pdo.php";
+    require_once __DIR__ . "/lib/session.php";
+    require_once __DIR__ . "/lib/preview.php";
+
+    $isAdminOnly = false;
+
+  $listBooks = getBooks($pdo);
+  // var_dump($listBooks);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -33,52 +44,72 @@
         </div>
         <div class="wrapper-link">
           <a href="index.html" class="nav-link">Accueil</a>
-          <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
+          <a href="bibliotheque.html" class="active nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
-          <!-- <label for="search"></label> -->
-          <img src="img/loupe.png" alt="" />
-          <input type="search" id="search" name="" placeholder="Recherche" />
-          <a href="connexion.html" class="button1">Se connecter</a>
+          <a href="login.html" class="button1">Connexion</a>
           <a href="sign-up.html" class="button1">S'inscrire</a>
-          <!-- <button href="connexion.html" class="button1">Se connecter</button>
+          <!-- <button href="login.html" class="button1">Connexion</button>
           <button class="button2">S'inscrire</button> -->
         </div>
       </nav>
     </header>
-    <section class="conatiner-user">
-      <div class="wrapper-form-user">
-        <div class="connexion">
-          <h1>Se Connecter</h1>
-          <form class="form-connexion" method="post" action="">
-            <div>
-              <label for="email">Email *</label>
-              <div class="large-input">
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  placeholder="email@exemple.com"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label for="password">Mot de passe *</label>
-              <div class="large-input">
-                <input type="password" name="password" id="password" required />
-              </div>
-            </div>
-            <div class="middle">
-              <button type="submit" class="button-form">Se connecter</button>
-            </div>
-          </form>
-        </div>
-        <div class="error">
-          <p>Email ou mot de passe incorrect.</p>
-        </div>
+    <section class="wrapper-recherche">
+      <div class="menu-genre">
+        <select name="genre" id="select-genre">
+          <option class="default-value" value="">
+            --- Sélectionnez un Genre ---
+          </option>
+          <option value="romance">Romance</option>
+          <option value="new-romane">New-Romance</option>
+          <option value="fiction">Fiction</option>
+          <option value="science-fiction">Science-Fiction</option>
+          <option value="litterature">Littérature</option>
+          <option value="polar">Polar</option>
+          <option value="fantaisie">Fantaisie</option>
+          <option value="thriller">Thriller</option>
+        </select>
+      </div>
+      <div class="recherche">
+        <input type="search" id="search" name="" placeholder="Recherche" />
       </div>
     </section>
+      <div class="container">
+    <?php foreach ($listBooks as $book): ?>
+      <section class="wrapper-preview">
+        <div>
+        <?php if (!empty($book['picture'])): ?>
+                    <!-- Affichage de l'image en base64 -->
+                    <img class="img-res" src="data:image/jpeg;base64,<?= base64_encode($book['picture']); ?>" alt="Photo de <?= htmlspecialchars($book['titre']); ?>" />
+                <?php else: ?>
+                    <!-- Image par défaut si aucune image n'est disponible dans la base de données -->
+                    <img class="" src="img/la_femme_de_menage.png" alt="Image par défaut" />
+                <?php endif; ?>
+        </div>
+        <div>
+          <div class="book">
+            <h3><?= htmlspecialchars($book['titre']); ?></h3>
+            <a class="more" href="product-detail.php?id=<?=$book['livre_id'] ?>">Voir plus</a>
+            <!-- <a href="animal.php?id=<?=$animal['animal_id'] ?>" class="btn btn-primary"> -->
+            <div class="description-book">
+              <p>Type :</p>
+              <p>Format<?= htmlspecialchars($book['format']); ?></p>
+              <p>Editeur : <?= htmlspecialchars($book['editeur']); ?></p>
+              <p>Parution :<?= htmlspecialchars($book['date_publication']); ?></p>
+            </div>
+          </div>
+          <div class="purchase">
+            <p><?= htmlspecialchars($book['prix']); ?>€</p>
+            <button class="button-form">
+              <img src="img/cart.png" alt="Panier" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+        <?php endforeach; ?> 
+        </div>
+        
     <div class="footer">
       <div class="logo-footer">
         <img

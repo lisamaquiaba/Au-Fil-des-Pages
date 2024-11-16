@@ -1,3 +1,25 @@
+<?php
+ require_once __DIR__ . "/lib/session.php";
+ require_once __DIR__ . "/lib/pdo.php";
+ require_once __DIR__ . "/lib/user.php";
+
+
+ if(isset($_POST['addUser']))  {
+
+  $name = $_POST['name'] ?? ''; 
+  $prenom = $_POST['prenom'] ?? ''; 
+  $email = $_POST['email'] ?? ''; 
+  $password = $_POST['password'] ?? '';
+
+  // var_dump($name);
+  // var_dump($prenom);
+  // var_dump($email);
+  // var_dump($password);
+
+ $message = addUser($pdo, $name, $prenom, $email, $password);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -36,12 +58,9 @@
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="active nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
-          <!-- <label for="search"></label> -->
-          <img src="img/loupe.png" alt="" />
-          <input type="search" id="search" name="" placeholder="Recherche" />
-          <a href="connexion.html" class="button1">Se connecter</a>
+          <a href="login.html" class="button1">Connexion</a>
           <a href="sign-up.html" class="button1">S'inscrire</a>
-          <!-- <button href="connexion.html" class="button1">Se connecter</button>
+          <!-- <button href="login.html" class="button1">Connexion</button>
           <button class="button2">S'inscrire</button> -->
         </div>
       </nav>
@@ -62,11 +81,11 @@
               />
             </div>
             <div class="mid-size-input">
-              <label for="lastname">Prénom *</label>
+              <label for="prenom">Prénom *</label>
               <input
                 type="text"
-                name="lastname"
-                id="lastname"
+                name="prenom"
+                id="prenom"
                 placeholder="Votre prénom"
                 required
               />
@@ -88,12 +107,12 @@
               <input type="password" name="password" id="password" required />
             </div>
           </div>
-          <div class="mid-size-input">
+          <!-- <div class="mid-size-input">
             <label for="password">Confirmer le mot de passe *</label>
             <input type="password" name="password" id="password" required />
-          </div>
+          </div> -->
           <div class="middle">
-            <button class="button-form" type="submit">Créer un compte</button>
+            <button class="button-form" type="submit" name="addUser">Créer un compte</button>
           </div>
         </form>
       </div>

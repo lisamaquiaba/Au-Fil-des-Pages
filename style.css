@@ -545,7 +545,19 @@ select,
   background-color: rgba(255, 0, 0, 35%);
   border: 1px solid #800020;
   margin-top: 25px;
+  padding: 25px;
   justify-content: center;
+}
+
+.wrapper-add-book {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-add-book {
+  margin-left: -9%;
 }
 
 /* --- FOOTER --- */

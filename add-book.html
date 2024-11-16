@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Au Fil des Pages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="img/logo.png"
+              alt="Logo de Au Fil des Pages"
+              width="80px"
+              height="64px"
+            />
+          </a>
+        </div>
+        <div class="wrapper-link">
+          <a href="index.html" class="nav-link">Accueil</a>
+          <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
+          <a href="club.html" class="active nav-link">Club de Lecture</a>
+          <a href="contact.html" class="nav-link">Nous contacter</a>
+          <a href="login.html" class="button1">Connexion</a>
+          <a href="sign-up.html" class="button1">S'inscrire</a>
+          <!-- <button href="login.html" class="button1">Connexion</button>
+          <button class="button2">S'inscrire</button> -->
+        </div>
+      </nav>
+    </header>
+    <section class="wrapper-add-book">
+      <div>
+        <h1>Ajouter un livre</h1>
+      </div>
+      <div class="form-add-book">
+        <form action="post" class="">
+          <div class="form-example">
+            <label for="tittle">Titre du livre</label>
+            <input type="text" name="tittle" id="tittle" required />
+          </div>
+          <div class="form-example">
+            <label for="synopsis">Synopsis</label>
+            <input type="text" name="synopsis" id="synopsis" required />
+          </div>
+          <div class="form-example">
+            <label for="tittle">Titre du livre</label>
+            <input type="text" name="tittle" id="tittle" required />
+          </div>
+          <div class="form-example">
+            <label for="format">Format</label>
+            <input type="text" name="format" id="format" required />
+          </div>
+          <div class="menu-genre">
+            <select name="genre" id="select-genre">
+              <option value="default-value">
+                --- Sélectionnez un Genre ---
+              </option>
+              <option value="romance">Romance</option>
+              <option value="new-romane">New-Romance</option>
+              <option value="polar">Polar</option>
+              <option value="fantaisie">Fantaisie</option>
+            </select>
+          </div>
+          <div class="form-example">
+            <label for="editor">Editeur</label>
+            <input type="text" name="editor" id="editor" required />
+          </div>
+          <div class="form-example">
+            <label for="price">Prix</label>
+            <input type="text" name="price" id="price" required />
+          </div>
+          <div class="form-example">
+            <label for="stock">Stock</label>
+            <input type="text" name="stock" id="stock" required />
+          </div>
+          <div class="form-example">
+            <label for="date-publication">Date de publication</label>
+            <input
+              type="date"
+              name="date-publication"
+              id="date-publication"
+              required
+            />
+          </div>
+          <div class="middle">
+            <button type="submit" name="submit" class="button-form">
+              Ajouterun livre
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

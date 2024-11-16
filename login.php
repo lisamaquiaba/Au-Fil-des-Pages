@@ -1,3 +1,27 @@
+<?php
+  require_once __DIR__ . "/lib/pdo.php";
+  require_once __DIR__ . "/lib/user.php";
+  require_once __DIR__ . "/lib/session.php";
+
+  $errors = [];
+
+  // session_start();
+
+  if (isset($_POST['loginUser'])) {
+    $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+
+    // var_dump ($user); 
+
+    if ($user) {
+      $_SESSION['user'] = $user;
+      header('location: profile.php?id=' . $_SESSION["user"]["id"]);
+    } else {
+      $errors[] = "Email ou mot de passe incorrecte";
+    }
+
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -35,46 +59,68 @@
           <a href="index.html" class="nav-link">Accueil</a>
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
-          <a href="coffee.html" class="active nav-link">Coin Café</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
-          <a href="login.html" class="button1">Connexion</a>
+          <?php if (isset($_SESSION['user'])) { ?>
+            <a href="logout.php" class="button1">Déconnexion</a>
+          <?php } else { ?>
+            <a href="login.php" class="button1">Connexion</a>
+          <?php } ?>
           <a href="sign-up.html" class="button1">S'inscrire</a>
           <!-- <button href="login.html" class="button1">Connexion</button>
           <button class="button2">S'inscrire</button> -->
         </div>
       </nav>
     </header>
-    <span class="wrapper">
-      <div class="text">
-        <h1>Le Coin Café</h1>
-        <p class="test2">
-          Au fil des Pages est heureux de pouvoir proposer à tous ses visiteurs
-          le Coin Café. Cet espace cosy et chaleureux est parfait pour une
-          petite pause détente. Profitez de nos délicieuse boisson. En passant
-          d’un classique café noir à un matcha latte ou même un thé saveur
-          fruits rouges, le Coin Café vous ouvre grandement ses portes pour vos
-          moments de calme. Nos baristas seront ravis de prendre soin de vous.
-        </p>
+    <section class="conatiner-user">
+      <div class="wrapper-form-user">
+        <div class="connexion">
+          <h1>Se Connecter</h1>
+          <form class="form-connexion" method="post" action="">
+            <div>
+              <label for="email">Email *</label>
+              <div class="large-input">
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="email@exemple.com"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <label for="password">Mot de passe *</label>
+              <div class="large-input">
+                <input type="password" name="password" id="password" required />
+              </div>
+            </div>
+            <div class="middle">
+              <button type="submit" name="loginUser" class="button-form">Se connecter</button>
+            </div>
+          </form>
+        </div>
+
+        <?php
+          foreach ($errors as $errors) { ?>
+          <div class="error">
+            <?=$errors; ?>
+          </div>  
+          <?php }
+        ?>
+        <!-- <div class="error">
+          <p>Email ou mot de passe incorrect.</p>
+        </div> -->
       </div>
-      <div class="illu">
+    </section>
+    <div class="footer">
+      <div class="logo-footer">
         <img
-          src="img/coffe_shop.png"
-          alt="Illustration du club de lecture Au fil des Pages"
-          width="250"
+          src="img/logo.png"
+          alt="Logo de Au Fil des Pages"
+          width="100"
+          height="100"
         />
       </div>
-    </span>
-    <div class="menu">
-      <a href="hot-drink.html" class="button2">Nos Boissons Chaudes</a>
-      <a href="cold-drink.html" class="button1">Nos Boissons Froides</a>
-    </div>
-    <div class="footer">
-      <img
-        src="img/logo.png"
-        alt="Logo de Au Fil des Pages"
-        width="100"
-        height="100"
-      />
       <div class="horaires">
         <h2>Nos Horaires</h2>
         <p>Du Lundi au vendredi : de 9h30 à 19h</p>
@@ -82,11 +128,10 @@
       </div>
       <div class="link">
         <h3>Liens rapides</h3>
-        <p>Accueil</p>
-        <p>A propos</p>
-        <p>Bibliothèque</p>
-        <p>Club de Lecture</p>
-        <p>Coin Café</p>
+        <a href="index.html"><p>Accueil</p></a>
+        <a href="bibliotheque.html"><p>Bibliothèque</p></a>
+        <a href="club.html"><p>Club de Lecture</p></a>
+        <a href="contact.html"><p>Nous Contacter</p></a>
       </div>
       <div class="social">
         <h3>Rejoignez-nous sur :</h3>

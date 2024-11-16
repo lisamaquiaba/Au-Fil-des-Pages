@@ -1,3 +1,17 @@
+<?php
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/user.php";
+require_once __DIR__ . "/lib/session.php";
+require_once __DIR__ . "/lib/preview.php";
+
+if(isset($_GET['id'])) { 
+  $id = intval($_GET['id']);
+}
+
+$book = getBookById($pdo, $id);
+// var_dump($book)
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -33,48 +47,56 @@
         </div>
         <div class="wrapper-link">
           <a href="index.html" class="nav-link">Accueil</a>
-          <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
+          <a href="bibliotheque.html" class="active nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
-          <a href="coffee.html" class="active nav-link">Coin Café</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
           <a href="login.html" class="button1">Connexion</a>
           <a href="sign-up.html" class="button1">S'inscrire</a>
-          <!-- <button href="login.html" class="button1">Connexion</button>
+          <!-- <button href="html" class="button1">Connexion</button>
           <button class="button2">S'inscrire</button> -->
         </div>
       </nav>
     </header>
-    <span class="wrapper">
-      <div class="text">
-        <h1>Le Coin Café</h1>
-        <p class="test2">
-          Au fil des Pages est heureux de pouvoir proposer à tous ses visiteurs
-          le Coin Café. Cet espace cosy et chaleureux est parfait pour une
-          petite pause détente. Profitez de nos délicieuse boisson. En passant
-          d’un classique café noir à un matcha latte ou même un thé saveur
-          fruits rouges, le Coin Café vous ouvre grandement ses portes pour vos
-          moments de calme. Nos baristas seront ravis de prendre soin de vous.
-        </p>
+    <section class="container-detail">
+      <div class="livre">
+        <div class="cover">
+          <img src="img/la_femme_de_menage.png" alt="Couverture du livre" />
+        </div>
+        <div class="wrapper-product">
+          <div class="author">
+            <h4><?= htmlspecialchars($book['auteur']); ?></h4>
+            <h2><?= htmlspecialchars($book['titre']); ?></h2>
+          </div>
+          <div class="aside">
+            <div class="synopsis">
+            <?= htmlspecialchars($book['description']); ?>
+            </div>
+            <div class="caracteristic">
+              <p>Type :<?= htmlspecialchars($book['format']); ?></p>
+              <p>Format : <?= htmlspecialchars($book['format']); ?></p>
+              <p>Editeur : <?= htmlspecialchars($book['editeur']); ?></p>
+              <p>Paru :<?= htmlspecialchars($book['date_publication']); ?></p>
+              <p>Pages : <?= htmlspecialchars($book['pages']); ?></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="illu">
+      <div class="purchase">
+        <p>8,60€</p>
+        <button class="button-form">
+          <img src="img/cart.png" alt="Panier" />
+        </button>
+      </div>
+    </section>
+    <div class="footer">
+      <div class="logo-footer">
         <img
-          src="img/coffe_shop.png"
-          alt="Illustration du club de lecture Au fil des Pages"
-          width="250"
+          src="img/logo.png"
+          alt="Logo de Au Fil des Pages"
+          width="100"
+          height="100"
         />
       </div>
-    </span>
-    <div class="menu">
-      <a href="hot-drink.html" class="button2">Nos Boissons Chaudes</a>
-      <a href="cold-drink.html" class="button1">Nos Boissons Froides</a>
-    </div>
-    <div class="footer">
-      <img
-        src="img/logo.png"
-        alt="Logo de Au Fil des Pages"
-        width="100"
-        height="100"
-      />
       <div class="horaires">
         <h2>Nos Horaires</h2>
         <p>Du Lundi au vendredi : de 9h30 à 19h</p>
@@ -82,11 +104,10 @@
       </div>
       <div class="link">
         <h3>Liens rapides</h3>
-        <p>Accueil</p>
-        <p>A propos</p>
-        <p>Bibliothèque</p>
-        <p>Club de Lecture</p>
-        <p>Coin Café</p>
+        <a href="index.html"><p>Accueil</p></a>
+        <a href="bibliotheque.html"><p>Bibliothèque</p></a>
+        <a href="club.html"><p>Club de Lecture</p></a>
+        <a href="contact.html"><p>Nous Contacter</p></a>
       </div>
       <div class="social">
         <h3>Rejoignez-nous sur :</h3>
