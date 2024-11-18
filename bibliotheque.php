@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . "/lib/pdo.php";
     require_once __DIR__ . "/lib/session.php";
-    require_once __DIR__ . "/lib/preview.php";
+    require_once __DIR__ . "/lib/book.php";
 
     $isAdminOnly = false;
 
@@ -62,12 +62,8 @@
           </option>
           <option value="romance">Romance</option>
           <option value="new-romane">New-Romance</option>
-          <option value="fiction">Fiction</option>
-          <option value="science-fiction">Science-Fiction</option>
-          <option value="litterature">Littérature</option>
-          <option value="polar">Polar</option>
           <option value="fantaisie">Fantaisie</option>
-          <option value="thriller">Thriller</option>
+          <option value="polar">Polar</option>
         </select>
       </div>
       <div class="recherche">
@@ -92,10 +88,11 @@
             <a class="more" href="product-detail.php?id=<?=$book['livre_id'] ?>">Voir plus</a>
             <!-- <a href="animal.php?id=<?=$animal['animal_id'] ?>" class="btn btn-primary"> -->
             <div class="description-book">
-              <p>Type :</p>
-              <p>Format<?= htmlspecialchars($book['format']); ?></p>
+              <p>Genre : </p>
+              <p>Format : <?= htmlspecialchars($book['format']); ?></p>
               <p>Editeur : <?= htmlspecialchars($book['editeur']); ?></p>
-              <p>Parution :<?= htmlspecialchars($book['date_publication']); ?></p>
+              <p>Parution : <?= htmlspecialchars($book['date_publication']); ?></p>
+              <p>Pages : <?= htmlspecialchars($book['pages']); ?></p>
             </div>
           </div>
           <div class="purchase">

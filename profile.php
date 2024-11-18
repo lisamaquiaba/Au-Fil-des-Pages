@@ -77,7 +77,11 @@
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
-          <a href="login.php" class="button1">Connexion</a>
+          <?php if (isset($_SESSION['user'])) { ?>
+            <a href="logout.php" class="button1">Déconnexion</a>
+          <?php } else { ?>
+            <a href="login.php" class="button1">Connexion</a>
+          <?php } ?>
           <a href="sign-up.html" class="button1">S'inscrire</a>
           <!-- <button href="login.html" class="button1">Connexion</button>
           <button class="button2">S'inscrire</button> -->
@@ -89,20 +93,20 @@
       <h2>Bienvenue <?= htmlspecialchars($user['prenom']) ?> !</h2>
       <div class="user-link">
         <a href="commande.html">Mes Commandes</a>
-        <a href="favoris.html">Mes Favoris</a>
         <a href="cart.html">Mon Panier</a>
         <?php endif; ?>
 
         <?php if ($isAdminOnly): ?>
-          <h2>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h2>
+          <h1>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h1>
           <div class="user-link">
           <a href="addBook.html">Ajouter un livre</a>
+          <a href="addUser.php">Créer un compte</a>
         <?php endif; ?>
 
         <?php if ($isEmploye): ?>
           <h2>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h2>
           <div class="user-link">
-          <a href="">TEST</a>
+          <a href="">Ajouter un livre</a>
         <?php endif; ?>
 
       </div>

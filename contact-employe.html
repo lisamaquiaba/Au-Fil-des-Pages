@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Au Fil des Pages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="img/logo.png"
+              alt="Logo de Au Fil des Pages"
+              width="80px"
+              height="64px"
+            />
+          </a>
+        </div>
+        <div class="wrapper-link">
+          <a href="index.html" class="nav-link">Accueil</a>
+          <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
+          <a href="club.html" class="nav-link">Club de Lecture</a>
+          <a href="contact.html" class="nav-link">Nous contacter</a>
+          <?php if (isset($_SESSION['user'])) { ?>
+          <a href="logout.php" class="button1">Déconnexion</a>
+          <?php } else { ?>
+          <a href="login.php" class="button1">Connexion</a>
+          <?php } ?>
+          <a href="sign-up.html" class="button1">S'inscrire</a>
+          <!-- <button href="login.html" class="button1">Connexion</button>
+          <button class="button2">S'inscrire</button> -->
+        </div>
+      </nav>
+    </header>
+    <section class="wrapper-contact-employe">
+      <div>
+        <h1>Messages des utilisateurs</h1>
+      </div>
+      <div class="contact-user">
+        <div class="info-contact">
+          <div>
+            <p>NOM Prénom</p>
+          </div>
+          <div>
+            <p>Email</p>
+          </div>
+        </div>
+        <div class="container-message">
+          <p>Message :</p>
+          <div class="message-user">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Cupiditate ab dolor alias aspernatur exercitationem? Voluptatibus
+              officia voluptate praesentium mollitia, facilis sit obcaecati
+              adipisci similique eaque, eligendi quaerat, commodi at expedita?
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

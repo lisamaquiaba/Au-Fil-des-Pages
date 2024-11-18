@@ -40,9 +40,6 @@
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
-          <!-- <label for="search"></label> -->
-          <!-- <img src="img/loupe.png" alt="" /> -->
-          <input type="search" id="search" name="" placeholder="Recherche" />
 
           <?php if (isset($_SESSION['user'])) { ?>
             <a href="logout.php" class="button1">Déconnexion</a>

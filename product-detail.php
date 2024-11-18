@@ -2,7 +2,7 @@
 require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/user.php";
 require_once __DIR__ . "/lib/session.php";
-require_once __DIR__ . "/lib/preview.php";
+require_once __DIR__ . "/lib/book.php";
 
 if(isset($_GET['id'])) { 
   $id = intval($_GET['id']);
@@ -60,7 +60,13 @@ $book = getBookById($pdo, $id);
     <section class="container-detail">
       <div class="livre">
         <div class="cover">
-          <img src="img/la_femme_de_menage.png" alt="Couverture du livre" />
+        <?php if (!empty($book['picture'])): ?>
+                    <!-- Affichage de l'image en base64 -->
+                    <img class="img-res" src="data:image/jpeg;base64,<?= base64_encode($book['picture']); ?>" alt="Photo de <?= htmlspecialchars($book['titre']); ?>" />
+                <?php else: ?>
+                    <!-- Image par défaut si aucune image n'est disponible dans la base de données -->
+                    <img class="" src="img/la_femme_de_menage.png" alt="Image par défaut" />
+                <?php endif; ?>
         </div>
         <div class="wrapper-product">
           <div class="author">
@@ -72,17 +78,17 @@ $book = getBookById($pdo, $id);
             <?= htmlspecialchars($book['description']); ?>
             </div>
             <div class="caracteristic">
-              <p>Type :<?= htmlspecialchars($book['format']); ?></p>
+              <p>Genre : </p>
               <p>Format : <?= htmlspecialchars($book['format']); ?></p>
               <p>Editeur : <?= htmlspecialchars($book['editeur']); ?></p>
-              <p>Paru :<?= htmlspecialchars($book['date_publication']); ?></p>
+              <p>Paru : <?= htmlspecialchars($book['date_publication']); ?></p>
               <p>Pages : <?= htmlspecialchars($book['pages']); ?></p>
             </div>
           </div>
         </div>
       </div>
       <div class="purchase">
-        <p>8,60€</p>
+        <p><?= htmlspecialchars($book['prix']); ?></p>
         <button class="button-form">
           <img src="img/cart.png" alt="Panier" />
         </button>

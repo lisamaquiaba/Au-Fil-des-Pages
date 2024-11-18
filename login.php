@@ -60,14 +60,13 @@
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
+          <a href="cart.html"><img src="img/cart.png" alt="Panier" class="cart"></a>
           <?php if (isset($_SESSION['user'])) { ?>
             <a href="logout.php" class="button1">Déconnexion</a>
           <?php } else { ?>
             <a href="login.php" class="button1">Connexion</a>
           <?php } ?>
           <a href="sign-up.html" class="button1">S'inscrire</a>
-          <!-- <button href="login.html" class="button1">Connexion</button>
-          <button class="button2">S'inscrire</button> -->
         </div>
       </nav>
     </header>

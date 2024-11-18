@@ -1,32 +1,33 @@
 <?php 
-    //   require_once __DIR__ . "/lib/pdo.php";
-    //   require_once __DIR__ . "/lib/session.php";
-    //   require_once __DIR__ . "/lib/book-club.php";
+      require_once __DIR__ . "/lib/pdo.php";
+      require_once __DIR__ . "/lib/session.php";
+      require_once __DIR__ . "/lib/book-club.php";
 
-    //   if(isset($_POST['VerifyClub'])) {
+
+      if(isset($_POST['verifyClub'])) {
     
-    //     $nom = $_POST['nom'] ?? ''; 
-    //     $prenom = $_POST['prenom'] ?? ''; 
-    //     $email = $_POST['email'] ?? ''; 
-    //     $naissance = $_POST['naissance'] ?? ''; 
+        $name = $_POST['name'] ?? ''; 
+        $prenom = $_POST['prenom'] ?? ''; 
+        $email = $_POST['email'] ?? ''; 
+        $naissance = $_POST['naissance'] ?? ''; 
     
-    //     if(!empty($nom) && !empty($prenom) && !empty($email) && !empty($naissance) !== null) {
-    //         $message = VerifyClub($pdo, $nom, $prenom, $email, $naissance);
-    //     } else {
-    //         $message = "Veuillez remplir tous les champs.";
-    //     }
-    // }
+        if(!empty($name) && !empty($prenom) && !empty($email) && !empty($naissance) !== null) {
+            $club = verifyClub($pdo, $name, $prenom, $email, $naissance);
+            if($club){
+              header('location: index.html');
+              
+            } else {
+              $message = "Erreur.";
+            }  
+
+        } else {
+            $message = "Veuillez remplir tous les champs.";
+        }
+    }
     
-    // $club = 
     //SI CHAMPS REMPLIS : RENVOYER A LA PAGE D'ACCUEUIL
     //SI CHAMPS NON REMPLIS OU INCORRECT : AFFICHER ERREUR
 
-    // if ($club) {
-    //   $_POST['nom' && 'prenom' && 'email' && 'naissance'] = $club;
-    //   header('location: index.html');
-    // } else {
-    //   $errors[] = "Information(s) incorrecte";
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +131,7 @@
               <input type="date" id="dob" name="naissance" min="1900" max="2006" required />
             </div>
               <div class="middle">
-                <button type="submit" name='submit'class="button-form">Soumettre le formulaire</button></div>
+                <button type="submit" name='verifyClub'class="button-form">Soumettre le formulaire</button></div>
             </div>
           </form>
         </div>

@@ -1,3 +1,20 @@
+<?php 
+  require_once __DIR__ . "/lib/pdo.php";
+  require_once __DIR__ . "/lib/contact.php";
+  require_once __DIR__ . "/lib/session.php";
+
+  if(isset($_POST['btn-contact']))  { //Lorsque que l'on appuie sur le bouton
+
+  $name = $_POST['name'] ?? ''; 
+  $prenom = $_POST['prenom'] ?? ''; 
+  $email = $_POST['email'] ?? ''; 
+  $reason = $_POST['reason'] ?? ''; 
+  $message = $_POST['message'] ?? ''; 
+
+  $message = contactUs($pdo, $name, $prenom, $email, $reason, $message);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -35,11 +52,14 @@
           <a href="index.html" class="nav-link">Accueil</a>
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
           <a href="club.html" class="nav-link">Club de Lecture</a>
-          <a href="contact.html" class="active nav-link">Nous contacter</a>
-          <a href="login.html" class="button1">Connexion</a>
+          <a href="contact.html" class="nav-link active">Nous contacter</a>
+          <a href="cart.html"><img src="img/cart.png" alt="Panier" class="cart"></a>
+          <?php if (isset($_SESSION['user'])) { ?>
+            <a href="logout.php" class="button1">Déconnexion</a>
+          <?php } else { ?>
+            <a href="login.php" class="button1">Connexion</a>
+          <?php } ?>
           <a href="sign-up.html" class="button1">S'inscrire</a>
-          <!-- <button href="login.html" class="button1">Connexion</button>
-          <button class="button2">S'inscrire</button> -->
         </div>
       </nav>
     </header>
@@ -53,7 +73,7 @@
           </p>
         </div>
         <div class="container-form-contact">
-          <form class="form-contact" action="" method="get">
+          <form class="form-contact" action="" method="post">
             <div class="user-infos">
               <div class="form-contact">
                 <label for="name">Nom * </label>
@@ -111,7 +131,7 @@
               </div>
             </div>
             <div class="middle">
-              <button type="submit" name="submit" class="button-form">
+              <button type="submit" name="btn-contact" class="button-form">
                 Envoyer
               </button>
             </div>

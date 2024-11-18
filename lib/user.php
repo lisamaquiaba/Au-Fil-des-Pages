@@ -25,18 +25,19 @@ function getUserById(PDO $pdo, int $id) {
 }
 
 
-function addUser(PDO $pdo, $name, $prenom, $email, $password) {
-    if(!empty($name) && !empty($prenom) && !empty($email) && !empty($password)) {
+function addUser(PDO $pdo, $name, $prenom, $email, $password, $role) {
+    if(!empty($name) && !empty($prenom) && !empty($email) && !empty($password) && !empty($role)) {
         try {
             // Hachage du mot de passe
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // Préparation de la requête d'insertion
-            $query = $pdo->prepare("INSERT INTO user (name, prenom, email, password) VALUES (:name, :prenom, :email, :password)");
+            $query = $pdo->prepare("INSERT INTO user (name, prenom, email, password, role) VALUES (:name, :prenom, :email, :password, role)");
             $query->bindValue(':name', $name, PDO::PARAM_STR);
             $query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
             $query->bindValue(':email', $email, PDO::PARAM_STR);
             $query->bindValue(':password', $hashedPassword, PDO::PARAM_STR); 
+            $query->bindValue(':role', $role, PDO::PARAM_STR); 
 
             $res = $query->execute();
 
