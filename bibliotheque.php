@@ -5,8 +5,19 @@
 
     $isAdminOnly = false;
 
-  $listBooks = getBooks($pdo);
-  // var_dump($listBooks);
+    if(!empty($_GET["search"])) {
+      $search = $_GET["search"];
+      $query = $pdo->prepare('SELECT * FROM livre WHERE titre LIKE :search'); 
+      $query->execute(["search" => '%' . $search . '%']);
+      $listBooks = $query->fetchAll(PDO::FETCH_ASSOC);   
+
+      // $genre = $_GET["genre"];
+      // $query = $pdo->prepare('SELECT * FROM livre WHERE id_genre = :genre'); 
+      // $query->execute(["genre" => $genre]);
+      // $listBooks = $query->fetchAll(PDO::FETCH_ASSOC);   
+      } else {
+        $listBooks = getBooks($pdo);
+      }
 ?>
 
 <!DOCTYPE html>
@@ -55,20 +66,23 @@
       </nav>
     </header>
     <section class="wrapper-recherche">
+      <form method="get">
       <div class="menu-genre">
         <select name="genre" id="select-genre">
           <option class="default-value" value="">
             --- Sélectionnez un Genre ---
           </option>
-          <option value="romance">Romance</option>
-          <option value="new-romane">New-Romance</option>
-          <option value="fantaisie">Fantaisie</option>
-          <option value="polar">Polar</option>
+          <option value="1">Romance</option>
+          <option value="2">New-Romance</option>
+          <option value="3">Fantasy</option>
+          <option value="4">Polar</option>
         </select>
       </div>
       <div class="recherche">
-        <input type="search" id="search" name="" placeholder="Recherche" />
+        <input type="search" name="search" placeholder="Recherche" />
       </div>
+      <button class="button1" type="submit">Rechercher</button>
+      </form>
     </section>
       <div class="container">
     <?php foreach ($listBooks as $book): ?>

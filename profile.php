@@ -94,12 +94,14 @@
       <div class="user-link">
         <a href="commande.html">Mes Commandes</a>
         <a href="cart.html">Mon Panier</a>
+        <a href="info.html">Mes Informations</a>
         <?php endif; ?>
 
         <?php if ($isAdminOnly): ?>
           <h1>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h1>
           <div class="user-link">
           <a href="addBook.html">Ajouter un livre</a>
+          <a href="addBook.html">Livres</a>
           <a href="addUser.php">Créer un compte</a>
         <?php endif; ?>
 
@@ -107,6 +109,8 @@
           <h2>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h2>
           <div class="user-link">
           <a href="">Ajouter un livre</a>
+          <a href="addBook.html">Livres</a>
+
         <?php endif; ?>
 
       </div>

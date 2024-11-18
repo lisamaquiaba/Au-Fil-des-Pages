@@ -10,6 +10,7 @@
   $email = $_POST['email'] ?? ''; 
   $reason = $_POST['reason'] ?? ''; 
   $message = $_POST['message'] ?? ''; 
+  var_dump($name, $prenom, $email, $reason, $message);
 
   $message = contactUs($pdo, $name, $prenom, $email, $reason, $message);
   }
@@ -86,11 +87,11 @@
                 />
               </div>
               <div class="form-test-contact">
-                <label for="firstname">Prénom * </label>
+                <label for="prenom">Prénom * </label>
                 <input
                   type="text"
-                  name="firstname"
-                  id="firstname"
+                  name="prenom"
+                  id="prenom"
                   required
                   placeholder="Votre Prénom"
                 />
@@ -108,15 +109,15 @@
             </div>
             <section class="checkbox">
               <div class="form-test-contact">
-                <input type="radio" name="suggestion" id="suggestion" />
+                <input type="radio" name="reason" id="suggestion" value="suggestion" />
                 <label for="suggestion">Suggestion</label>
               </div>
               <div class="form-test-contact">
-                <input type="radio" name="club" id="club" />
+                <input type="radio" name="reason" id="club"  value="club"/>
                 <label for="club">Club de lecture</label>
               </div>
               <div class="form-test-contact">
-                <input type="radio" name="autre" id="autre" />
+                <input type="radio" name="reason" id="autre"  value="autre"/>
                 <label for="autre">Autre</label>
               </div>
             </section>

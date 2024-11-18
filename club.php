@@ -10,6 +10,8 @@
         $prenom = $_POST['prenom'] ?? ''; 
         $email = $_POST['email'] ?? ''; 
         $naissance = $_POST['naissance'] ?? ''; 
+
+        var_dump($name, $prenom, $email, $naissance);
     
         if(!empty($name) && !empty($prenom) && !empty($email) && !empty($naissance) !== null) {
             $club = verifyClub($pdo, $name, $prenom, $email, $naissance);
@@ -113,14 +115,14 @@
         <h4>Formulaire d’inscription au Club de lecture</h4>
         <p>* Champ obligatoire</p>
         <div class="form-club">
-          <form action="" method="get">
+          <form action="" method="post">
             <div class="form-example">
               <label for="name">Nom * </label>
               <input type="text" name="name" id="name" required placeholder="Votre Nom"/>
             </div>
             <div class="form-example">
               <label for="firstname">Prénom * </label>
-              <input type="text" name="firstname" id="firstname" required placeholder="Votre Prénom"/>
+              <input type="text" name="prenom" id="prenom" required placeholder="Votre Prénom"/>
             </div>
             <div class="form-example">
               <label for="email">Email * </label>

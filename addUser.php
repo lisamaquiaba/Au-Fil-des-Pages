@@ -1,11 +1,12 @@
 <?php 
   require_once __DIR__ . "/lib/pdo.php";
   require_once __DIR__ . "/lib/user.php";
+  require_once __DIR__ . "/lib/session.php";
 
-  // if($_SESSION['user']['role'] !== 'admin') {
-  //   header('location: index.html');
-  //   exit;
-  // }
+  if($_SESSION['user']['role'] !== 'admin') {
+    header('location: index.html');
+    exit;
+  }
 
   if(isset($_POST['addUser']))  {
 
@@ -14,9 +15,11 @@
       $email = $_POST['email'] ?? '';
       $password = $_POST['password'] ?? '';
       $role = $_POST['role'] ?? '';
+      // var_dump()
 
      $message = addUser($pdo, $name, $prenom, $email, $password, $role);
     }
+    // var_dump($prenom, $name, $prenom, $email, $password, $role);
 ?>
 
 <!DOCTYPE html>
@@ -82,12 +85,12 @@
         </div>
         <div class="large-input">
           <div>
-            <label for="firstname">Prénom * </label>
+            <label for="prenom">Prénom * </label>
           </div>
           <input
             type="text"
-            name="firstname"
-            id="firstname"
+            name="prenom"
+            id="prenom"
             required
             placeholder="Votre Prénom"
           />

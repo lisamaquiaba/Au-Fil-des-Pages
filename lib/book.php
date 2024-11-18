@@ -1,7 +1,7 @@
 <?php 
 
 function getBooks(PDO $pdo) {
-    $query = $pdo->prepare('SELECT * FROM livre'); 
+    $query = $pdo->prepare('SELECT * FROM livre ORDER BY date_publication DESC'); 
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC); 
 }

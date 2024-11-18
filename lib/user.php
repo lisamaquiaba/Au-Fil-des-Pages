@@ -32,7 +32,7 @@ function addUser(PDO $pdo, $name, $prenom, $email, $password, $role) {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // Préparation de la requête d'insertion
-            $query = $pdo->prepare("INSERT INTO user (name, prenom, email, password, role) VALUES (:name, :prenom, :email, :password, role)");
+            $query = $pdo->prepare("INSERT INTO user (name, prenom, email, password, role) VALUES (:name, :prenom, :email, :password, :role)");
             $query->bindValue(':name', $name, PDO::PARAM_STR);
             $query->bindValue(':prenom', $prenom, PDO::PARAM_STR);
             $query->bindValue(':email', $email, PDO::PARAM_STR);
