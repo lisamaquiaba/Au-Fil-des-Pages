@@ -100,15 +100,15 @@
         <?php if ($isAdminOnly): ?>
           <h1>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h1>
           <div class="user-link">
-          <a href="addBook.html">Ajouter un livre</a>
-          <a href="addBook.html">Livres</a>
+          <a href="add-book.php">Ajouter un livre</a>
+          <a href="edit-book.html">Modifier / Supprimer un livre</a>
           <a href="addUser.php">Créer un compte</a>
         <?php endif; ?>
 
         <?php if ($isEmploye): ?>
           <h2>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h2>
           <div class="user-link">
-          <a href="">Ajouter un livre</a>
+          <a href="add-book.php">Ajouter un livre</a>
           <a href="addBook.html">Livres</a>
 
         <?php endif; ?>

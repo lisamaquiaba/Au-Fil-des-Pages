@@ -1,3 +1,42 @@
+<?php 
+  require_once __DIR__ . "/lib/pdo.php";
+  require_once __DIR__ . "/lib/session.php";
+  require_once __DIR__ . "/lib/book.php";
+  require_once __DIR__ . "/lib/image.php";
+
+//   if($_SESSION['user']['role'] !== 'admin') {
+//     header('location: index.php');
+// }
+
+if(isset($_POST['addBook'])) {
+  var_dump("ok");
+
+  $imgContent = handleImageUpload($_FILES['image']);
+  var_dump($_FILES['image']);
+
+  $titre = $_POST['titre'] ?? ''; 
+  $auteur = $_POST['auteur'] ?? ''; 
+  $id_genre = $_POST['genre'] ?? ''; 
+  $format = $_POST['format'] ?? ''; 
+  $editeur = $_POST['editeur'] ?? ''; 
+  $description = $_POST['description'] ?? ''; 
+  $pages = ($_POST['pages']); 
+  $prix = ($_POST['prix']); 
+  $stock = ($_POST['stock']); 
+  $date_publication = ($_POST['publication']); 
+  
+  // var_dump($titre, $auteur, $description, $id_genre, $format, $editeur, $description, $pages, $prix, $stock, $date_publication, $imgContent);
+
+  if(!empty($titre) && !empty($auteur) && !empty($description) && !empty($genre) && !empty($format) && !empty($editeur) && $description && !empty($pages) && !empty($prix) && !empty($stock) && !empty($date_publication) !== null) {
+      var_dump("test");
+    $message = addBook($pdo, $titre, $auteur, $id_genre, $format, $editeur, $description, $pages, $prix, $stock, $prix, $stock, $date_publication, $imgContent);
+  } else {
+      $message = "Veuillez remplir tous les champs, y compris la photo.";
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -34,7 +73,7 @@
         <div class="wrapper-link">
           <a href="index.html" class="nav-link">Accueil</a>
           <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
-          <a href="club.html" class="active nav-link">Club de Lecture</a>
+          <a href="club.html" class="nav-link">Club de Lecture</a>
           <a href="contact.html" class="nav-link">Nous contacter</a>
           <a href="login.html" class="button1">Connexion</a>
           <a href="sign-up.html" class="button1">S'inscrire</a>
@@ -48,18 +87,20 @@
         <h1>Ajouter un livre</h1>
       </div>
       <div class="form-add-book">
-        <form action="post" class="">
+        <form method="post" class="" enctype="multipart/form-data">
           <div class="form-example">
-            <label for="tittle">Titre du livre</label>
-            <input type="text" name="tittle" id="tittle" required />
+            <label for="titre">Titre du livre</label>
+            <input type="text" name="titre" id="titre" required />
           </div>
           <div class="form-example">
-            <label for="synopsis">Auteur</label>
-            <input type="text" name="synopsis" id="synopsis" required />
+            <label for="auteur">Auteur</label>
+            <input type="text" name="auteur" id="auteur" required />
           </div>
           <div class="form-example">
-            <label for="tittle">Synopsis</label>
-            <input type="text" name="tittle" id="tittle" required />
+            <label for="description">Synopsis</label>
+             <div>
+             <textarea class="message" name="descritpion" id="descritpion" required></textarea>
+             </div>
           </div>
           <div class="form-example">
             <label for="format">Format</label>
@@ -70,44 +111,51 @@
               <option value="default-value">
                 --- Sélectionnez un Genre ---
               </option>
-              <option value="romance">Romance</option>
-              <option value="new-romane">New-Romance</option>
-              <option value="polar">Polar</option>
-              <option value="fantaisie">Fantaisie</option>
+              <option value="1">Romance</option>
+              <option value="2">New-Romance</option>
+              <option value="3">Fantasy</option>
+              <option value="4">Polar</option>
             </select>
           </div>
           <div class="form-example">
-            <label for="editor">Editeur</label>
-            <input type="text" name="editor" id="editor" required />
+            <label for="editeur">Editeur</label>
+            <input type="text" name="editeur" id="editeur" required />
           </div>
           <div class="form-example">
-            <label for="editor">Nombre de pages</label>
-            <input type="text" name="editor" id="editor" required />
+            <label for="pages">Nombre de pages</label>
+            <input type="text" name="pages" id="pages" required />
           </div>
           <div class="form-example">
-            <label for="price">Prix</label>
-            <input type="text" name="price" id="price" required />
+            <label for="prix">Prix</label>
+            <input type="text" name="prix" id="prix" required />
           </div>
           <div class="form-example">
             <label for="stock">Stock</label>
             <input type="text" name="stock" id="stock" required />
           </div>
           <div class="form-example">
-            <label for="date-publication">Date de publication</label>
+            <label for="publication">Date de publication</label>
             <input
               type="date"
-              name="date-publication"
-              id="date-publication"
+              name="publication"
+              id="publication"
               required
             />
           </div>
+          <div class="form-example">
+            <label for="image">Couverture</label>
+            <input type="file" name="image" accept="image/*">
+          </div>
           <div class="middle">
-            <button type="submit" name="submit" class="button-form">
+            <button type="submit" name="addBook" class="button-form">
               Ajouter un livre
             </button>
+              <?php if (isset($message)): ?>
+              <p class="error"><?= htmlspecialchars($message); ?></p>
+              <?php endif; ?>
           </div>
         </form>
       </div>
     </section>
-  </body>
-</html>
+ 
+    <?php require_once __DIR__. "/templates/footer.php" ?>

@@ -1,7 +1,3 @@
-<?php 
-  require_once __DIR__ . "/lib/session.php";
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -26,7 +22,7 @@
     <header class="topbar">
       <nav class="navbar">
         <div class="logo">
-          <a href="index.html">
+          <a href="index.php">
             <img
               src="img/logo.png"
               alt="Logo de Au Fil des Pages"
@@ -36,40 +32,20 @@
           </a>
         </div>
         <div class="wrapper-link">
-          <a href="index.html" class="nav-link">Accueil</a>
-          <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
-          <a href="club.html" class="nav-link">Club de Lecture</a>
-          <a href="contact.html" class="nav-link">Nous contacter</a>
-
+          <a href="index.php" class="nav-link">Accueil</a>
+          <a href="bibliotheque.php" class="nav-link">Bibliothèque</a>
+          <a href="club.php" class="nav-link">Club de Lecture</a>
+          <a href="contact.php" class="nav-link">Nous contacter</a>
+          <?php if (isset($_SESSION['user'])) { ?>
+            <a href="cart.html"><img src="img/cart.png" alt="Panier" class="cart"></a>
+          <?php } ?>
+          <!-- <a href="cart.html"><img src="img/cart.png" alt="Panier" class="cart"></a> -->
           <?php if (isset($_SESSION['user'])) { ?>
             <a href="logout.php" class="button1">Déconnexion</a>
           <?php } else { ?>
             <a href="login.php" class="button1">Connexion</a>
           <?php } ?>
-
-          <!-- <a href="login.html" class="button1">Connexion</a> -->
-          <a href="sign-up.html" class="button1">S'inscrire</a>
-          <!-- <button href="login.html" class="button1">Connexion</button>
-          <button class="button2">S'inscrire</button> -->
+          <a href="sign-up.php" class="button1">S'inscrire</a>
         </div>
-        <!-- <div class="nav-mobile">
-          <a href="index.html" class="active nav-link">Accueil</a>
-          <a href="bibliotheque.html" class="nav-link">Bibliothèque</a>
-          <a href="club.html" class="nav-link">Club de Lecture</a>
-          <a href="contact.html" class="nav-link">Nous contacter</a>
-          <a href="login.html" class="button1">Connexion</a>
-          <a href="sign-up.html" class="button1">S'inscrire</a>
-        </div> -->
-        <div class="nav-toggle"><img src="img/list.png" alt="" /></div>
       </nav>
-    </header>
-    <div class="wrapper-user-connected">
-      <h1>Bienvenu(e) (firstname user) !</h1>
-      <div class="user-link">
-        <a href="commande.html">Mes Commandes</a>
-        <a href="favoris.html">Mes Favoris</a>
-        <a href="cart.html">Mon Panier</a>
-      </div>
-    </div>
-    
-    <?php require_once __DIR__. "/templates/footer.php" ?>
+    </header> 

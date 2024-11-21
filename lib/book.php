@@ -21,21 +21,27 @@ function getBooks(PDO $pdo) {
     
     }
 
-    function addBook($pdo, $titre, $auteur, $id_genre, $format, $description, $prix, $stock, $date_publication, $imgContent) {
-        if (empty($prenom) || empty($etat) || empty($imgContent)) {
-            return "Veuillez remplir tous les champs, y compris la photo.";
+
+    function addBook($pdo, $titre, $auteur, $id_genre, $format, $editeur, $description, $stock, $prix, $pages, $date_publication, $image) {
+
+        $query = $pdo->prepare("INSERT INTO livre (titre, auteur, id_genre, format, editeur, description, stock, prix, pages, date_publication, image) VALUES (:titre, :auteur, :id_genre, :format, :editeur, :description, :stock, :prix, :pages, :date_publication, :image)");
+
+        $query->bindValue(':titre', $titre, PDO::PARAM_STR);
+        $query->bindValue(':auteur', $auteur, PDO::PARAM_STR);
+        $query->bindValue(':id_genre', $id_genre, PDO::PARAM_INT);
+        $query->bindValue(':format', $format, PDO::PARAM_STR);
+        $query->bindValue(':editeur', $editeur, PDO::PARAM_STR);
+        $query->bindValue(':description', $description, PDO::PARAM_STR);
+        $query->bindValue(':stock', $stock, PDO::PARAM_STR);
+        $query->bindValue(':prix', $prix, PDO::PARAM_INT);
+        $query->bindValue(':pages', $pages, PDO::PARAM_INT);
+        $query->bindValue(':date_publication', $date_publication, PDO::PARAM_STR);
+        $query->bindValue(':image', $image, PDO::PARAM_LOB);
+
+        try {
+            $res = $query->execute();
+            return $res ? "Livre Ajouté" : "Erreur lors de l'ajout d'un livre.";
+        } catch (PDOException $e) {
+            return "Erreur : " . $e->getMessage();
         }
-
-    $query = $pdo->prepare("INSERT INTO livre (titre, auteur, id_genre, format, description, prix, stock, date_publication, picture) VALUES (:titre, :auteur, :id_genre, :format, :description, :prix, :stock, :date_publication, :picture)");
-    
-    $query->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $query->bindValue(':auteur', $auteur, PDO::PARAM_STR);
-    $query->bindValue(':id_genre', $id_genre, PDO::PARAM_INT);
-    $query->bindValue(':format', $format, PDO::PARAM_STR);
-    $query->bindValue(':description', $descrpiption, PDO::PARAM_STR);
-    $query->bindValue(':prix', $prix, PDO::PARAM_STR);
-    $query->bindValue(':stock', $stock, PDO::PARAM_INT);
-    $query->bindValue(':date_publication', $date_publication, PDO::PARAM_STR);
-    $query->bindValue(':picture', $imgContent, PDO::PARAM_LOB);
-
     }
