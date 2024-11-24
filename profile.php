@@ -109,7 +109,7 @@
           <h2>Bonjour <?= htmlspecialchars($user['prenom']) ?> !</h2>
           <div class="user-link">
           <a href="add-book.php">Ajouter un livre</a>
-          <a href="addBook.html">Livres</a>
+          <a href="edit-book.html">Modifier / Supprimer un livre</a>
 
         <?php endif; ?>
 

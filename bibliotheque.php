@@ -85,12 +85,13 @@
       </form>
     </section>
       <div class="container">
+        <section class="wrapper-preview">
     <?php foreach ($listBooks as $book): ?>
-      <section class="wrapper-preview">
+      <div class='card-book'>
         <div>
-        <?php if (!empty($book['picture'])): ?>
+        <?php if (!empty($book['image'])): ?>
                     <!-- Affichage de l'image en base64 -->
-                    <img class="img-res" src="data:image/jpeg;base64,<?= base64_encode($book['picture']); ?>" alt="Photo de <?= htmlspecialchars($book['titre']); ?>" />
+                    <img class="img-res" src="data:image/jpeg;base64,<?= base64_encode($book['image']); ?>" alt="Photo de <?= htmlspecialchars($book['titre']); ?>" />
                 <?php else: ?>
                     <!-- Image par défaut si aucune image n'est disponible dans la base de données -->
                     <img class="" src="img/la_femme_de_menage.png" alt="Image par défaut" />
@@ -116,9 +117,9 @@
             </button>
           </div>
         </div>
-      </section>
-
+        </div>
         <?php endforeach; ?> 
+      </section>
         </div>
         
         <?php require_once __DIR__. "/templates/footer.php" ?>

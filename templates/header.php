@@ -37,9 +37,8 @@
           <a href="club.php" class="nav-link">Club de Lecture</a>
           <a href="contact.php" class="nav-link">Nous contacter</a>
           <?php if (isset($_SESSION['user'])) { ?>
-            <a href="cart.html"><img src="img/cart.png" alt="Panier" class="cart"></a>
+            <a href="cart.php"><img src="img/cart.png" alt="Panier" class="cart"></a>
           <?php } ?>
-          <!-- <a href="cart.html"><img src="img/cart.png" alt="Panier" class="cart"></a> -->
           <?php if (isset($_SESSION['user'])) { ?>
             <a href="logout.php" class="button1">Déconnexion</a>
           <?php } else { ?>
@@ -47,5 +46,7 @@
           <?php } ?>
           <a href="sign-up.php" class="button1">S'inscrire</a>
         </div>
+
+        <span class="nav-toggle"><img src="img/list.png" alt="" /></span>
       </nav>
     </header> 
