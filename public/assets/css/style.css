@@ -21,10 +21,6 @@ h1 {
   font-size: 40px;
 }
 
-/* img {
-  width: 100%;
-} */
-
 a {
   text-decoration: none;
   color: #ffff;
@@ -34,8 +30,6 @@ input,
 textarea {
   border: 1px solid #1d3223;
   border-radius: 10px;
-  /* display: block;
-  margin-bottom: 20px; */
 }
 
 button,
@@ -111,10 +105,6 @@ a {
   display: flex;
   align-items: center;
 }
-
-/* .wrapper h1 {
-  font-size: 40px;
-} */
 
 .slogan {
   margin-bottom: -4%;
@@ -264,22 +254,7 @@ input[type="date"] {
   margin-top: 10%;
 }
 
-/* .contact {
-  background-color: #f7f4f4;
-  border: 1px solid #000000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  width: 539px;
-  height: 600px;
-  margin-top: 80px;
-} */
-
 .form-contact {
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-start; */
   margin-top: 50px;
 }
 
@@ -309,14 +284,8 @@ input[type="date"] {
 
 .wrapper-message {
   margin-top: 10%;
-  /* margin-left: -17%; */
   padding-bottom: 5%;
 }
-
-/* .message {
-  width: 875px;
-  height: 152px;
-} */
 
 .message {
   width: 100%;
@@ -327,18 +296,6 @@ input[type="date"] {
   background-color: #f8f2e6;
   border: 1px solid #000;
 }
-
-/* .button-form button {
-  font-size: 16px;
-  width: 200px;
-  margin-left: 25%;
-  margin-top: 25px;
-  margin-bottom: 25px;
-} */
-
-/* .button-form {
-  width: 100%;
-} */
 
 .wrapper-contact-employe {
   padding-top: 100px;
@@ -376,7 +333,6 @@ input[type="date"] {
 
 .wrapper-form-user {
   border: 1px solid #000000;
-  /* margin: 13% auto; */
   background-color: #f7f4f4;
   width: 80%;
   height: 530px;
@@ -409,7 +365,6 @@ input[type="date"] {
 .wrapper-form-signup {
   display: flex;
   border: 1px solid #000000;
-  /* margin: auto; */
   margin-top: 120px;
   margin-left: 10%;
   background-color: #f7f4f4;
@@ -574,18 +529,6 @@ select,
   border-bottom: 2px solid #000000;
   border-radius: 0;
 }
-
-/* .book a {
-  border-bottom: 1px solid #000000;
-  color: #000;
-} */
-
-/* .books {
-  position: absolute;
-  z-index: 99;
-  left: 17%;
-  bottom: 24%;
-} */
 
 .error {
   display: flex;
@@ -772,13 +715,9 @@ select,
 }
 
 @media screen and (max-width: 980px) {
-  /* .wrapper-bestseller {
-    display: none;
-  } */
   .bestseller {
     border: none;
     width: auto;
-    /* width: 100%; */
   }
   .img-bestseller {
     width: 100%;
@@ -841,12 +780,11 @@ select,
   }
 }
 
-/* @media screen and (max-width: 816px) {
-  .user-signup {
+@media screen and (max-width: 800px) {
+  .wrapper-preview {
     flex-direction: column;
-    gap: 17px;
   }
-} */
+}
 
 @media screen and (max-width: 765px) {
   .link {
@@ -954,11 +892,6 @@ select,
     align-items: center;
     gap: 50px;
   }
-
-  /* .wrapper-recherche input,
-  select {
-    width: 300px;
-  } */
 
   .purchase {
     margin-bottom: 70px;
