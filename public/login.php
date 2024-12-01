@@ -5,8 +5,6 @@
 
   $errors = [];
 
-  // session_start();
-
   if (isset($_POST['loginUser'])) {
     $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
 
@@ -58,9 +56,6 @@
           </div>  
           <?php }
         ?>
-        <!-- <div class="error">
-          <p>Email ou mot de passe incorrect.</p>
-        </div> -->
       </div>
     </section>
    

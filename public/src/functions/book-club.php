@@ -1,7 +1,6 @@
 <?php
 function addClub(PDO $pdo, string $name, string $prenom, string $email, string $naissance): string
 {
-    // Validation des données
     $name = trim($name);
     $prenom = trim($prenom);
     $email = filter_var(trim($email), FILTER_VALIDATE_EMAIL);

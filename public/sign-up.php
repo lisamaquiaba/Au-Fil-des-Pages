@@ -59,10 +59,6 @@
               <input type="password" name="password" id="password" required />
             </div>
           </div>
-          <!-- <div class="mid-size-input">
-            <label for="password">Confirmer le mot de passe *</label>
-            <input type="password" name="password" id="password" required />
-          </div> -->
           <div class="middle">
             <button class="button-form" type="submit" name="addUser">Créer un compte</button>
           </div>
